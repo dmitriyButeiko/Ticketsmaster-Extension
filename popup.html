@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div>
+		<label>Search parameters(Divide by ,)</label>
+		<textarea id="events_to_search"></textarea>
+	</div>
+	<div>
+		<button id="startSearch">Start search</button>
+	</div>
+
+	<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		/*function makeSearch()
+		{
+			$("a.nav-search").click();
+
+			setTimeout(function(){
+				$("#global-search__form-input").val("red rocks");
+				$(".new-modal__search-btn").click();
+			}, 1500);			
+		}*/
+
+
+		function startEventGrabbing(events_to_search)
+		{
+			//console.log("New Events:");
+			//alert(events_to_search);
+			//console.log(events_to_search);
+			var eventObject = {
+				searchStarted : 1,
+				lastCheckingDate : Date.now()/1000,
+				events_to_search : events_to_search
+			};
+
+
+			console.log("SAVING search_started VALUE TO LOCAL STORAGE");
+
+  			chrome.storage.local.set({ search_started : eventObject }, function(){
+  			});			
+		}
+
+
+		$(document).ready(function(){
+			$("#startSearch").click(function(){
+				var eventsToSearch = $("#events_to_search").val();
+
+				console.log("EVENTS TO SEARCH:");
+				console.log(eventsToSearch);
+
+				if(eventsToSearch != "")
+				{
+					startEventGrabbing(eventsToSearch);
+				}
+			});	
+		});
+	</script>
+</body>
+</html>

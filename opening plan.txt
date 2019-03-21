@@ -1,0 +1,14 @@
+- op ne 20 max with parameter that wi;lll havre keyword search 
+ - Record link and put it into local storage
+ - Add value to local storage how much windows have to be hadled and how much already handled / 
+ - begin iwndfows opening after all links fetches
+
+
+
+
+
+
+
+
+
+ 
